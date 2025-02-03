@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Todo-List</title>
+</head>
+<body>
+    
+    <div id="container">
+
+        <div id="sidebar">
+            <div id="sHeader">
+                <p id="sHeaderMain">Projects</p>
+            </div>
+
+            <dialog id="dProject">
+                <form id="dForm">
+                    <label for="pTitle">Project Name:</label>
+                    <input type="text" name="projectTitle" id="pTitle" placeholder="Study, Vacation, Daily Routine">
+                    <div id="dBtns">
+                    <button id="dBtn1" type="button">Cancel</button>
+                    <button id="dBtn2" type="submit">Create</button>
+                    </div>
+                </form>
+            </dialog>
+
+            <button id="addP">Add Project</button>
+        </div>
+        <div id="header">
+             <p id="header1">Todo-List</p>
+
+        </div>
+        <dialog id="dTodo">
+            <form id="dForm2">
+                <p class="p1">
+                    <label for="tTitle">Title:</label>
+                    <input type="text" name="Todo-Title" id="tTitle" placeholder="What is this Todo about?">
+                </p>
+
+                <p class="p1">
+                    <label for="tDescription">Description:</label>
+                    <textarea name="Todo-Description" id="tDescription" placeholder="Enter your todo details here...."></textarea>
+                </p>
+
+                <p class="p1">
+                    <label for="tDueDate">DueDate:</label>
+                    <input type="date" name="Todo-DueDate" id="tDueDate">
+                </p>
+                <p class="p1">
+                    <label for="tPriority">Priority:</label>
+                    <select name="Todo-Priority" id="tPriority">
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                    </select>
+                </p>
+                <div id="dBtns2">
+                    <button id="cancel2" type="button">Cancel</button>
+                    <button id="add2" type="submit">Add Todo</button>
+                </div>
+            </form>
+        </dialog>
+        <div id="subContainer">
+            
+        </div>
+
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
