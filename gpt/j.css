@@ -1,38 +1,38 @@
-*{
+* {
     margin: 0;
     padding: 0;
-}
-html,body{
+  }
+  html, body {
     height: 100%;
-}
-
-button{
+  }
+  
+  button {
     cursor: pointer;
-}
-
-#container{
+  }
+  
+  #container {
     height: 100%;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 4fr;
     grid-template-rows: 1fr 9fr;
     font-family: serif;
-}
-
-#sidebar{
+  }
+  
+  #sidebar {
     grid-column: 1/2;
     grid-row: 1/3;
-    background-color:#1F2937;
-    color:aliceblue;
+    background-color: #1F2937;
+    color: aliceblue;
     border-right: 2px solid aliceblue;
     font-family: inherit;
     display: grid;
     grid-template-rows: repeat(11, 1fr);
     justify-items: center;
     row-gap: 15px;
-}
-
-#sHeader{
+  }
+  
+  #sHeader {
     grid-row: 1/3;
     width: 100%;
     font-size: 30px;
@@ -42,9 +42,9 @@ button{
     display: grid;
     justify-items: center;
     align-items: center;
-}
-
-#addP{
+  }
+  
+  #addP {
     grid-row: 3/4;
     height: 70%;
     width: 50%;
@@ -56,8 +56,9 @@ button{
     border-radius: 7px;
     border: 2px solid aliceblue;
     margin-top: 10px;
-}
-.pName{
+  }
+  
+  .pName {
     height: 70%;
     width: 80%;
     background-color: #1F2937;
@@ -69,13 +70,13 @@ button{
     margin: 10px;
     border-radius: 7px;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
-}
-
-#header{
+  }
+  
+  #header {
     grid-column: 2/3;
     grid-row: 1/2;
-    background-color:#1F2937;
-    color:aliceblue;
+    background-color: #1F2937;
+    color: aliceblue;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -84,9 +85,9 @@ button{
     font-weight: bold;
     padding: 20px;
     box-sizing: border-box;
-}
-
-#dProject{
+  }
+  
+  #dProject {
     height: 200px;
     width: 250px;
     padding: 15px;
@@ -94,9 +95,9 @@ button{
     border-radius: 8px;
     margin: auto;
     font-family: serif;
-}
-
-#dForm{
+  }
+  
+  #dForm {
     height: 100%;
     width: 100%;
     display: flex;
@@ -104,13 +105,13 @@ button{
     justify-content: center;
     align-items: center;
     gap: 20px;
-}
-#dForm label{
+  }
+  #dForm label {
     font-size: 25px;
     font-family: inherit;
     font-weight: bold;
-}
-#pTitle{
+  }
+  #pTitle {
     height: 45px;
     width: 100%;
     padding: 5px;
@@ -119,16 +120,17 @@ button{
     font-family: inherit;
     font-size: 16px;
     font-weight: bold;
-}
-#dBtns, #dBtns2{
+  }
+  #dBtns, #dBtns2, #dEditBtns {
     height: auto;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
-}
-#dBtn1, #dBtn2, #cancel2, #add2{
+  }
+  #dBtn1, #dBtn2, #cancel2, #add2,
+  #cancelEdit, #updateTodo, #deleteTodo {
     height: 35px;
     width: 50%;
     border-radius: 10px;
@@ -139,8 +141,9 @@ button{
     color: aliceblue;
     padding: 5px;
     box-sizing: border-box;
-}
-#subContainer{
+  }
+  
+  #subContainer {
     grid-column: 2/3;
     grid-row: 2/3;
     display: flex;
@@ -148,9 +151,9 @@ button{
     box-sizing: border-box;
     padding: 20px;
     gap: 20px;
-}
-
-#addTodoBtn{
+  }
+  
+  #addTodoBtn {
     height: 40px;
     width: 10%;
     background-color: aliceblue;
@@ -159,59 +162,20 @@ button{
     font-size: 20px;
     font-weight: bold;
     font-family: inherit;
-}
-
-#dTodo{
-    height: 350px;
+  }
+  
+  #dTodo, #dEditTodo {
+    height: auto;
     width: 300px;
     padding: 15px;
     box-sizing: border-box;
     border: 2px solid #1F2937;
     margin: auto;
     border-radius: 7px;
-}
-#dForm2{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-.p1{
-    display: grid;
-    justify-items: start;
-    width: 100%;
-    gap: 5px;
-}
-.p1 label{
-    font-size: 20px;
-    font-weight: bold;
-    font-family: inherit;
-}
-.p1 input {
-    height: 30px;
-    width: 100%;
-    padding: 5px;
-    box-sizing: border-box;
-    border-radius: 5px;
-    font-family: inherit;
-    font-size: 16px;
-    font-weight: bold;
-}
-#tDescription{
-    height: 50px;
-    width: 100%;
-    padding: 5px;
-    box-sizing: border-box;
-    border-radius: 5px;
-    font-family: inherit;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.tDiv{
+  }
+  
+  /* Todo Item Styles */
+  .tDiv {
     height: 150px;
     width: fit-content;
     display: flex;
@@ -219,40 +183,25 @@ button{
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    /* overflow: auto; */
     padding: 10px;
     box-sizing: border-box;
     border: 2px solid aliceblue;
     border-radius: 8px;
     background-color: #1F2937;
     color: aliceblue;
-
-}
-
-/* .tDivTitle, .tDivDescription, .tDivDd, .tDivP{
-    max-width: 100%;
-    word-wrap: break-word;
-    margin: 7px 0;
-} */
-.tDivTitle{
+    cursor: pointer;
+  }
+  
+  .tDivTitle {
     font-size: 22px;
     font-weight: bold;
     font-family: inherit;
     margin: 20px 0;
-}
-/* .tDivDescription{
-    width: 100%;
-    font-size: 25px;
-    font-weight: 500;
-    font-family: inherit;
-} */
-.tDivDd{
+  }
+  
+  .tDivDd {
     font-size: 18px;
     font-weight: 450;
     font-family: inherit;
-}
-/* .tDivP{
-    font-size: 25px;
-    font-weight: bold;
-    font-family: inherit;
-} */
+  }
+  

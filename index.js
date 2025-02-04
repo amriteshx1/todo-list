@@ -24,6 +24,7 @@ class Project {
 }
 
 const allProjects = [];
+let currentProject = null;
 
 
 const form1 = document.getElementById('dForm');
@@ -40,6 +41,17 @@ const form2 = document.getElementById('dForm2');
 const cBtn2 = document.getElementById('cancel2');
 const sBtn2 = document.getElementById('add2');
 
+function showTodo(i){
+    if (!allProjects[i] || allProjects[i].todos.length === 0) {
+        return; // Do nothing if the array is empty
+    };
+
+    const cProject = allProjects[i];
+    cProject.todos.forEach(element => {
+        createTodo(element);
+    });
+}
+
 function createTodo(newT){
 
     const tDiv = document.createElement('div');
@@ -47,23 +59,21 @@ function createTodo(newT){
 
     const tDivTitle = document.createElement('p');
     tDivTitle.className = "tDivTitle";
-    tDivTitle.textContent = newT.title;
+    tDivTitle.textContent = "'" + newT.title + "'";
     tDiv.appendChild(tDivTitle);
-
-    const tDivDescription = document.createElement('p');
-    tDivDescription.className = "tDivDescription";
-    tDivDescription.textContent = newT.description;
-    tDiv.appendChild(tDivDescription);
 
     const tDivDd = document.createElement('p');
     tDivDd.className = "tDivDd";
-    tDivDd.textContent = "Due-Date: " + newT.dueDate;
+    if(!newT.dueDate){
+        tDivDd.textContent = "Due-Date : N/A";
+    }else{
+        let dateValue = newT.dueDate;
+        let [year, month, day] = dateValue.split("-");
+        let formattedDate = `${day}-${month}-${year}`;
+        tDivDd.textContent = "Due-Date : " + formattedDate;
+    }
+    
     tDiv.appendChild(tDivDd);
-
-    const tDivP = document.createElement('p');
-    tDivP.className = "tDivP";
-    tDivP.textContent = "Priority: " + newT.priority;
-    tDiv.appendChild(tDivP);
 
     subCnt.appendChild(tDiv);
 
@@ -78,6 +88,7 @@ form2.addEventListener("submit",(event) =>{
         const todoDd = document.getElementById('tDueDate').value;
         const todoP = document.getElementById('tPriority').value;
         const newTodo = new Todo(todoTitle, todoDescription, todoDd, todoP);
+        currentProject.addTodo(newTodo);
         createTodo(newTodo);
         dialog2.close();
         form2.reset();
@@ -128,14 +139,19 @@ form1.addEventListener("submit", (event) => {
     const projectName = document.getElementById('pTitle').value;
     const newProject = new Project(projectName);
     allProjects.push(newProject);
+    
     const newP = document.createElement('button');
     newP.className = "pName";
     newP.type = "button";
     newP.textContent = projectName;
     sideCnt.appendChild(newP);
+    currentProject = newProject;
 
-    newP.addEventListener("click",(e) =>{
-        e.preventDefault();
+    newP.addEventListener("click",(event) =>{
+        event.preventDefault();
+        subCnt.innerHTML = "";
+        let i = allProjects.findIndex(project => project.name === event.target.textContent);
+        showTodo(i);
         createAddTodoBtn();
     })
     dialog1.close();
