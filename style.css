@@ -212,7 +212,7 @@ button{
 }
 
 .tDiv{
-    height: 150px;
+    height: 175px;
     width: fit-content;
     display: flex;
     flex-direction: column;
@@ -227,6 +227,29 @@ button{
     background-color: #1F2937;
     color: aliceblue;
 
+}
+
+.btnDiv{
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.tDivBtn{
+    height: 100%;
+    width: 50%;
+    border-radius: 10px;
+    font-size: 17px;
+    font-family: inherit;
+    font-weight: bold;
+    background-color: aliceblue;
+    color: #1F2937;
+    padding: 5px;
+    box-sizing: border-box;
 }
 
 /* .tDivTitle, .tDivDescription, .tDivDd, .tDivP{
