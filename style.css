@@ -238,7 +238,6 @@ button{
     gap: 10px;
     margin-top: 10px;
 }
-
 .tDivBtn{
     height: 100%;
     width: 50%;
@@ -251,31 +250,14 @@ button{
     padding: 5px;
     box-sizing: border-box;
 }
-
-/* .tDivTitle, .tDivDescription, .tDivDd, .tDivP{
-    max-width: 100%;
-    word-wrap: break-word;
-    margin: 7px 0;
-} */
 .tDivTitle{
     font-size: 22px;
     font-weight: bold;
     font-family: inherit;
     margin: 20px 0;
 }
-/* .tDivDescription{
-    width: 100%;
-    font-size: 25px;
-    font-weight: 500;
-    font-family: inherit;
-} */
 .tDivDd{
     font-size: 18px;
     font-weight: 450;
     font-family: inherit;
 }
-/* .tDivP{
-    font-size: 25px;
-    font-weight: bold;
-    font-family: inherit;
-} */
