@@ -45,6 +45,28 @@ const cBtn2 = document.getElementById('cancel2');
 const sBtn2 = document.getElementById('add2');
 const hdr = document.getElementById('header1');
 
+//local storage part
+function saveToLocalStorage() {
+    localStorage.setItem('allProjects', JSON.stringify(allProjects));
+};
+
+function loadFromLocalStorage() {
+    const storedProjects = localStorage.getItem('allProjects');
+    if (storedProjects) {
+        const projects = JSON.parse(storedProjects);
+        projects.forEach(projectData => {
+            const project = new Project(projectData.name);
+            projectData.todos.forEach(todoData => {
+                const todo = new Todo(todoData.title, todoData.description, todoData.dueDate, todoData.priority);
+                todo.completed = todoData.completed;
+                project.addTodo(todo);
+            });
+            allProjects.push(project);
+        });
+    }
+}
+// end of that
+
 function implementDivBtns(r, v, todoI, tDiv) {
     r.addEventListener("click", (e) => {
         e.preventDefault();
@@ -54,6 +76,7 @@ function implementDivBtns(r, v, todoI, tDiv) {
             currentProject.removeTodo(todoIndex);
         }
         tDiv.remove();
+        saveToLocalStorage(); 
     });
 
     v.addEventListener("click",(e) =>{
@@ -73,7 +96,7 @@ function implementDivBtns(r, v, todoI, tDiv) {
 
 function showTodo(i){
     if (!allProjects[i] || allProjects[i].todos.length === 0) {
-        return; // Do nothing if the array is empty
+        return; 
     };
 
     const cProject = allProjects[i];
@@ -156,6 +179,7 @@ form2.addEventListener("submit", (event) => {
       currentEditingDiv = null;
       dialog2.close();
       form2.reset();
+      saveToLocalStorage();
       return; 
     }
   
@@ -165,6 +189,7 @@ form2.addEventListener("submit", (event) => {
     createTodo(newTodo);
     dialog2.close();
     form2.reset();
+    saveToLocalStorage();
   });
 
 
@@ -187,6 +212,7 @@ cBtn2.addEventListener("click",() =>{
 }
     dialog2.close();
     form2.reset();
+    saveToLocalStorage();
 });
 
 
@@ -254,4 +280,30 @@ form1.addEventListener("submit", (event) => {
     dialog1.close();
     form1.reset();
     newP.click();
+    saveToLocalStorage();
+});
+
+document.addEventListener('DOMContentLoaded', () =>{
+    loadFromLocalStorage();
+
+    if (allProjects.length > 0) {
+        allProjects.forEach(project => {
+            const newP = document.createElement('button');
+            newP.className = "pName";
+            newP.type = "button";
+            newP.textContent = project.name;
+            sideCnt.appendChild(newP);
+
+            newP.addEventListener("click", (event) => {
+                event.preventDefault();
+                subCnt.innerHTML = "";
+                hdr.textContent = project.name;
+                let i = allProjects.findIndex(proj => proj.name === event.target.textContent);
+                currentProject = allProjects[i];
+                showTodo(i);
+                createAddTodoBtn();
+            });
+        });
+        }
+        
 });
