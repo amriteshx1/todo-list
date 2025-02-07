@@ -41,16 +41,17 @@
 
                 <p class="p1">
                     <label for="tDescription">Description:</label>
-                    <textarea name="Todo-Description" id="tDescription" placeholder="Enter your todo details here...."></textarea>
+                    <textarea name="Todo-Description" id="tDescription" placeholder="Enter your todo details here...." required></textarea>
                 </p>
 
                 <p class="p1">
                     <label for="tDueDate">DueDate:</label>
-                    <input type="date" name="Todo-DueDate" id="tDueDate">
+                    <input type="date" name="Todo-DueDate" id="tDueDate" required>
                 </p>
                 <p class="p1">
                     <label for="tPriority">Priority:</label>
-                    <select name="Todo-Priority" id="tPriority">
+                    <select name="Todo-Priority" id="tPriority" required>
+                        <option value="" disabled selected>Select priority</option>
                         <option value="Low">Low</option>
                         <option value="Medium">Medium</option>
                         <option value="High">High</option>
@@ -67,6 +68,6 @@
         </div>
 
     </div>
-    <script src="index.js"></script>
+    <script src="index.js" type="module"></script>
 </body>
 </html>
